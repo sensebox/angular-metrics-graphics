@@ -42,7 +42,9 @@ angular.module('metricsgraphics', []).directive('chart', function() {
         return 'mg-chart-' + s;
       }
       element[0].id = element[0].id ? element[0].id : randomString(5);
-      options.target = '#' + element[0].id;
+      if(scope.options.target === null){
+        options.target = '#' + element[0].id;
+      }
       // create the chart
       scope.$watch('data', function() {
         options.data = scope.data || [];
